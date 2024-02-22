@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npx husky init",
     "prepare": "husky"
   },
   "keywords": [],
@@ -16,7 +15,7 @@
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "git-commit-msg-linter": "5.0.4",
-    "husky": "^9.0.11",
+    "husky": "^8.0.3",
     "lint-staged": "^15.2.2"
   }
 }
