@@ -1,0 +1,21 @@
+{
+	"extends": ["@commitlint/config-conventional"],
+	"rules": {
+	  "type-enum": [
+		2,
+		"always",
+		[
+		  "✨ feat, Adição de nova funcionalidade", 
+		  "🐛 fix", 
+		  "🔨 chore"		 
+		]
+	  ],
+	  "type-case": [2, "always", "lowerCase"],
+	  "type-empty": [2, "never"],
+	  "scope-empty": [2, "never"],
+	  "scope-case": [2, "always", "kebab-case"],
+	  "subject-case": [2, "always", "sentence-case"],
+	  "subject-empty": [2, "never"]
+	}
+  }
+  
