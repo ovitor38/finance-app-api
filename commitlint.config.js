@@ -1,7 +1,7 @@
 export default {
     parserPreset: "conventional-changelog-conventionalcommits",
     rules: {
-        "header-max-length": [0, "always", 72],
+        "header-max-length": [0, "always", 3],
     },
     prompt: {
         settings: {},
