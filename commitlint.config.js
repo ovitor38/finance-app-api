@@ -1,10 +1,15 @@
 export default {
+    parserPreset: {
+        parserOpts: {
+            subjectPattern: /^(\w+)\((\w+)(-(\w+))?\): (.+)$/,
+            subjectPatternErrorMsg: "Errooor",
+        },
+    },
     extends: ["@commitlint/config-conventional"],
     plugins: [
         {
             rules: {
                 "type-enum": (parsed, _when, expectedValues) => {
-                    console.log(parsed);
                     const { type } = parsed;
                     if (!type || !expectedValues.includes(type))
                         return [
