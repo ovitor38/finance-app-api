@@ -1,2 +1,2 @@
-const names = "Victor Os.";
+const names = "Victor Oss.";
 console.log(names);
