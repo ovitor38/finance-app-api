@@ -21,13 +21,15 @@ export class CreateUserController {
             }
 
             if (params.password.length < 6) {
-                badRequest({ message: "Password must be least 6 chacteres" });
+                return badRequest({
+                    message: "Password must be least 6 chacteres",
+                });
             }
 
             const emailIsValid = validator.isEmail(params.email);
 
             if (!emailIsValid) {
-                badRequest({ message: "The email is invalid" });
+                return badRequest({ message: "The email is invalid" });
             }
 
             const createUserUseCase = new CreateUserUseCase();
