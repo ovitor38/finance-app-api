@@ -1,4 +1,4 @@
-import { PostgresHelper } from "../../db/postgres/helper";
+import { PostgresHelper } from "../../db/postgres/helper.js";
 
 export class PostgresDeleteUserRepository {
     async execute(userId) {
@@ -7,7 +7,7 @@ export class PostgresDeleteUserRepository {
         DELETE FROM users 
         WHERE id = $1 
         RETURNING *`,
-            userId,
+            [userId],
         );
 
         return deletedUser[0];

@@ -1,4 +1,4 @@
-import { GetUserByIdUseCase } from "../use-cases/get-user-by-id.js";
+import { DeleteUserUseCase } from "../use-cases/delete-user.js";
 import {
     checkIfIdIsValid,
     invalidIdResponse,
@@ -7,19 +7,18 @@ import {
     userNotFoundResponse,
 } from "./helpers/index.js";
 
-export class GetUserByIdController {
+export class DeleteUserController {
     async execute(httpRequest) {
         try {
-            const isValidId = checkIfIdIsValid(httpRequest.params.userId);
+            const userId = httpRequest.params.userId;
+            const isValidId = checkIfIdIsValid(userId);
 
             if (!isValidId) {
                 return invalidIdResponse();
             }
-            const getUserByIdUseCase = new GetUserByIdUseCase();
+            const deleteUserUseCase = new DeleteUserUseCase();
 
-            const user = await getUserByIdUseCase.execute(
-                httpRequest.params.userId,
-            );
+            const user = await deleteUserUseCase.execute(userId);
 
             if (!user) {
                 return userNotFoundResponse();
