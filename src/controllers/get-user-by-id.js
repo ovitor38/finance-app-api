@@ -10,7 +10,7 @@ import {
 export class GetUserByIdController {
     async execute(httpRequest) {
         try {
-            const isValidId = checkIfIdIsValid();
+            const isValidId = checkIfIdIsValid(httpRequest.params.userId);
 
             if (!isValidId) {
                 return invalidIdResponse();

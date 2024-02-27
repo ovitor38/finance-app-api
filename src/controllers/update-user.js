@@ -17,7 +17,7 @@ export class UpdateUserController {
         try {
             const userId = httpRequest.params.userId;
 
-            const isValidId = checkIfIdIsValid();
+            const isValidId = checkIfIdIsValid(userId);
 
             if (!isValidId) {
                 return invalidIdResponse();
@@ -41,16 +41,24 @@ export class UpdateUserController {
                 });
             }
 
-            const passwordIsValid = ifPasswordIsValid(updateUserParams);
+            if (updateUserParams.password) {
+                const passwordIsValid = ifPasswordIsValid(
+                    updateUserParams.password,
+                );
 
-            if (passwordIsValid) {
-                return invalidPasswordResponse();
+                if (passwordIsValid) {
+                    return invalidPasswordResponse();
+                }
             }
 
-            const emailIsValid = checkIfEmailIsValid(updateUserParams);
+            if (updateUserParams.email) {
+                const emailIsValid = checkIfEmailIsValid(
+                    updateUserParams.email,
+                );
 
-            if (!emailIsValid) {
-                return emailIsAlreadyInUseResponse();
+                if (!emailIsValid) {
+                    return emailIsAlreadyInUseResponse();
+                }
             }
 
             const updateUserUseCase = new UpdateUserUseCase();
