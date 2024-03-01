@@ -10,4 +10,5 @@ export class UserNotFoundError extends Error {
         super(`User with id ${userId} not found`);
         this.name = "UserNotFoundError";
     }
+    transactionIdtransactionId;
 }

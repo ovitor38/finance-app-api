@@ -10,7 +10,7 @@ export class PostgresCreateTransaction {
         `,
             [
                 createTrasactionParams.id,
-                createTrasactionParams.userId,
+                createTrasactionParams.user_id,
                 createTrasactionParams.name,
                 createTrasactionParams.date,
                 createTrasactionParams.amount,
