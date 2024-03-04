@@ -5,7 +5,7 @@ import {
     created,
     invalidIdResponse,
     serverError,
-} from "../helpers";
+} from "../helpers/index.js";
 
 export class CreateTransactionController {
     constructor(createTransactionUseCase) {
@@ -25,8 +25,11 @@ export class CreateTransactionController {
             ];
 
             for (const field of requiredFields) {
-                if (!params[field] || params[field].trim().length === 0) {
-                    badRequest({ message: `Missing param ${field}` });
+                if (
+                    !params[field] ||
+                    params[field].toString().trim().length === 0
+                ) {
+                    return badRequest({ message: `Missing param ${field}` });
                 }
             }
 
@@ -44,7 +47,7 @@ export class CreateTransactionController {
             const amountIsValid = validator.isCurrency(
                 params.amount.toString(),
                 {
-                    digits_after_decimal: 2,
+                    digits_after_decimal: [2],
                     allow_negatives: false,
                     decimal_separator: ".",
                 },

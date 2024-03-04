@@ -24,8 +24,11 @@ export class CreateUserController {
             ];
 
             for (const field of requiredFields) {
-                if (!params[field] || params[field].trim().length === 0) {
-                    badRequest({ message: `Missing param ${field}` });
+                if (
+                    !params[field] ||
+                    params[field].toString().trim().length === 0
+                ) {
+                    return badRequest({ message: `Missing param ${field}` });
                 }
             }
 
