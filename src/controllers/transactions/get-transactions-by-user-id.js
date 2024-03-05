@@ -1,11 +1,11 @@
-import { UserNotFoundError } from "../../errors/users";
-import { ok } from "../helpers/http";
-import { userNotFoundResponse } from "../helpers/users";
+import { UserNotFoundError } from "../../errors/users.js";
+import { ok } from "../helpers/http.js";
+import { userNotFoundResponse } from "../helpers/users.js";
 import {
     checkIfIdIsValid,
     invalidIdResponse,
     requeriedFieldsMissingResponse,
-} from "../helpers/validation";
+} from "../helpers/validation.js";
 
 export class GetTransactionsByUserIdController {
     constructor(getTransactionsByUserIdUseCase) {
@@ -26,9 +26,10 @@ export class GetTransactionsByUserIdController {
                 return invalidIdResponse();
             }
 
-            const transactions = await this.getTransactionsByUserIdUseCase({
-                userId,
-            });
+            const transactions =
+                await this.getTransactionsByUserIdUseCase.execute({
+                    userId,
+                });
 
             return ok(transactions);
         } catch (error) {
