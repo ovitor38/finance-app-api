@@ -1,4 +1,4 @@
-import { PostgresHelper } from "../../../db/postgres/migrations.js";
+import { PostgresHelper } from "../../../db/postgres/helper.js";
 
 export class PostgresDeleteTransactionRepository {
     async execute(trasactionId) {
