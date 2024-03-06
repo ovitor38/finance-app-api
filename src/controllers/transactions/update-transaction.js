@@ -10,7 +10,7 @@ import {
     serverError,
 } from "../helpers/index.js";
 
-export class updateTransanctionController {
+export class UpdateTransanctionController {
     constructor(updateTransanctionUseCase) {
         this.updateTransanctionUseCase = updateTransanctionUseCase;
     }
@@ -31,7 +31,7 @@ export class updateTransanctionController {
                 (field) => !allowedFields.includes(field),
             );
 
-            if (!someFieldsIsNotAllowed) {
+            if (someFieldsIsNotAllowed) {
                 return badRequest({ message: "Some fields is not allowed" });
             }
 
@@ -52,7 +52,7 @@ export class updateTransanctionController {
             }
 
             const transaction = await this.updateTransanctionUseCase.execute(
-                httpRequest.body.transactionId,
+                httpRequest.params.transactionId,
                 params,
             );
 
