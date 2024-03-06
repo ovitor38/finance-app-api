@@ -1,6 +1,7 @@
 import {
     checkIfIdIsValid,
     invalidIdResponse,
+    ok,
     serverError,
     transactionNotFoundResponse,
 } from "../helpers/index.js";
@@ -24,10 +25,10 @@ export class DeleteTransactionController {
                 );
 
             if (!deletedTransaction) {
-                return transactionNotFoundResponse;
+                return transactionNotFoundResponse();
             }
 
-            return deletedTransaction;
+            return ok(deletedTransaction);
         } catch (error) {
             console.log(error);
             return serverError();
