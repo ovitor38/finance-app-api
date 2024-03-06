@@ -1,6 +1,6 @@
 import { PostgresHelper } from "../../../db/postgres/migrations.js";
 
-export class PostgresDeleteRepository {
+export class PostgresDeleteTransactionRepository {
     async execute(trasactionId) {
         const deletedTransaction = await PostgresHelper.query(
             `
