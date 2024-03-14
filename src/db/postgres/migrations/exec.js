@@ -16,7 +16,7 @@ const execMigrationsasync = async () => {
     } catch (error) {
         console.log(error);
     } finally {
-        await client.release;
+        await client.release();
     }
 };
 
