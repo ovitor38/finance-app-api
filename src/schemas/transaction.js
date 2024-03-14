@@ -10,7 +10,7 @@ export const createTransactionSchema = z.object({
     date: z
         .string({ required_error: "Date is requiered" })
         .datetime({ message: "Date must be a valid date" }),
-    type: z.enum(["EARNING", "EXPENSE", "INVESTIMENT"], {
+    type: z.enum(["EARNING", "EXPENSE", "INVESTMENT"], {
         errorMap: () => ({
             message: "Type must be EARNING, EXPENSE or INVESTIMENT",
         }),
